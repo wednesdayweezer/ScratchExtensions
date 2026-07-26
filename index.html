@@ -159,6 +159,7 @@
 
         .view-btn {
             background: #9d52ff;
+            opacity: 0.7;
             color: white;
         }
 
@@ -176,7 +177,7 @@
         <div class="subtitle">extension gallery</div>
         <hr>
 
-        <div id="extensions-container"><div class="extensions-grid"><div class="extension-card"><img class="extension-banner" src="./static/homepage/runtimeBanner.png" alt="Positions"><div class="extension-content"><h2 class="extension-name">Positions</h2><p class="extension-description">A plugin to store positional data in reporters. <i>Pairs well with Targets by jwklong.</i></p><div class="extension-buttons"><button class="copy-btn">copy url</button><a class="download-btn" href="https://raw.githubusercontent.com/wednesdayweezer/ScratchExtensions/refs/heads/main/static/extensions/runtimevariables.js" download="" target="_blank">download</a></div><div class="extension-url">https://raw.githubusercontent.com/wednesdayweezer/ScratchExtensions/refs/heads/main/static/extensions/runtimevariables.js</div></div></div>
+        <div id="extensions-container"><div class="extensions-grid"><div class="extension-card"><img class="extension-banner" src="./static/homepage/runtimeBanner.png" alt="Runtime Variables"><div class="extension-content"><h2 class="extension-name">Positions</h2><p class="extension-description">A plugin to store positional data in reporters. <i>Pairs well with Targets by jwklong.</i></p><div class="extension-buttons"><button class="copy-btn">copy url</button><a class="download-btn" href="https://raw.githubusercontent.com/wednesdayweezer/ScratchExtensions/refs/heads/main/static/extensions/runtimevariables.js" download="" target="_blank">download</a></div><div class="extension-url">https://raw.githubusercontent.com/wednesdayweezer/ScratchExtensions/refs/heads/main/static/extensions/runtimevariables.js</div></div></div>
     </div>
 
     <script>
@@ -226,12 +227,6 @@
                     copyBtn.className = 'copy-btn';
                     copyBtn.innerHTML = 'copy url';
                     copyBtn.onclick = () => copyToClipboard(ext.url, copyBtn);
-
-                    const viewBtn = document.createElement('a');
-                    viewBtn.className = 'view-btn';
-                    viewBtn.innerHTML = 'view';
-                    viewBtn.href = `https://studio.penguinmod.com/editor.html?extension=${encodeURIComponent(ext.url)}`;
-                    viewBtn.target = '_blank';
 
                     const downloadBtn = document.createElement('a');
                     downloadBtn.className = 'download-btn';
