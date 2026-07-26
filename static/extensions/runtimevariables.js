@@ -38,9 +38,21 @@
         delete runtimeVariablesRoot[key];
     }
 
-    const threadVariables = new WeakMap();
+    let threadVariables = new WeakMap();
 
     const getGlobalVariableStore = () => runtimeVariablesRoot[GLOBAL_VARIABLES_KEY];
+    const getSpriteVariableTargetId = target => {
+        if (!target) {
+            return null;
+        }
+        if (target.isOriginal) {
+            return target.id;
+        }
+        if (target.sprite && target.sprite.id !== undefined) {
+            return target.sprite.id;
+        }
+        return target.id;
+    };
     const getSpriteVariableStore = spriteId => {
         const sprites = runtimeVariablesRoot[SPRITE_VARIABLES_KEY];
         if (!sprites[spriteId]) {
@@ -88,6 +100,24 @@
     };
 
     loadObjectsExtension();
+
+    const clearAllRuntimeVariables = () => {
+        const globalStore = getGlobalVariableStore();
+        Object.keys(globalStore).forEach((key) => {
+            delete globalStore[key];
+        });
+
+        const spriteStore = runtimeVariablesRoot[SPRITE_VARIABLES_KEY];
+        Object.keys(spriteStore).forEach((spriteId) => {
+            delete spriteStore[spriteId];
+        });
+
+        threadVariables = new WeakMap();
+    };
+
+    if (vm && vm.runtime && typeof vm.runtime.on === 'function') {
+        vm.runtime.on('PROJECT_START', clearAllRuntimeVariables);
+    }
 
     const getFallbackDogeiscutObject = () => {
         const fallback = {
@@ -193,6 +223,7 @@
                         opcode: 'getGlobalVariable',
                         blockType: Scratch.BlockType.REPORTER,
                         blockShape: Scratch.BlockShape.OCTAGONAL,
+                        allowDropAnywhere: true,
                         text: 'get global variable [NAME]',
                         arguments: {
                             NAME: {
@@ -238,6 +269,7 @@
                         opcode: 'getSpriteVariable',
                         blockType: Scratch.BlockType.REPORTER,
                         blockShape: Scratch.BlockShape.OCTAGONAL,
+                        allowDropAnywhere: true,
                         text: 'get sprite variable [NAME]',
                         arguments: {
                             NAME: {
@@ -283,6 +315,7 @@
                         opcode: 'getThreadVariable',
                         blockType: Scratch.BlockType.REPORTER,
                         blockShape: Scratch.BlockShape.OCTAGONAL,
+                        allowDropAnywhere: true,
                         text: 'get thread variable [NAME]',
                         arguments: {
                             NAME: {
@@ -310,9 +343,14 @@
                         text: 'get thread variables as objects'
                     },
                     {
-                        opcode: 'deleteAllVariables',
+                        opcode: 'deleteAllGlobalVariables',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'delete all variables'
+                        text: 'delete all global variables'
+                    },
+                    {
+                        opcode: 'deleteAllSpriteVariables',
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'delete all sprite variables'
                     }
                 ]
             };
@@ -341,14 +379,14 @@
         setSpriteVariable(args) {
             const variableName = args.VARIABLE;
             const value = args.VALUE;
-            const spriteId = Scratch.vm.runtime.getEditingTarget().id;
+            const spriteId = getSpriteVariableTargetId(Scratch.vm.runtime.getEditingTarget());
             const variables = getSpriteVariableStore(spriteId);
             variables[variableName] = value;
         }
 
         getSpriteVariable(args) {
             const variableName = args.NAME;
-            const spriteId = Scratch.vm.runtime.getEditingTarget().id;
+            const spriteId = getSpriteVariableTargetId(Scratch.vm.runtime.getEditingTarget());
             const sprites = runtimeVariablesRoot[SPRITE_VARIABLES_KEY];
             if (sprites[spriteId]) {
                 return sprites[spriteId][variableName] || '';
@@ -358,7 +396,7 @@
 
         deleteSpriteVariable(args) {
             const variableName = args.NAME;
-            const spriteId = Scratch.vm.runtime.getEditingTarget().id;
+            const spriteId = getSpriteVariableTargetId(Scratch.vm.runtime.getEditingTarget());
             const sprites = runtimeVariablesRoot[SPRITE_VARIABLES_KEY];
             if (sprites[spriteId]) {
                 delete sprites[spriteId][variableName];
@@ -366,7 +404,7 @@
         }
 
         getSpriteVariablesAsObjects() {
-            const spriteId = Scratch.vm.runtime.getEditingTarget().id;
+            const spriteId = getSpriteVariableTargetId(Scratch.vm.runtime.getEditingTarget());
             const sprites = runtimeVariablesRoot[SPRITE_VARIABLES_KEY];
             return toObj(sprites[spriteId] || {});
         }
@@ -413,8 +451,17 @@
             return toObj(variables);
         }
 
-        deleteAllVariables() {
-            Scratch.vm.runtimeVariables = {};
+        deleteAllGlobalVariables() {
+            Object.keys(getGlobalVariableStore()).forEach((key) => {
+                delete getGlobalVariableStore()[key];
+            });
+        }
+
+        deleteAllSpriteVariables() {
+            const sprites = runtimeVariablesRoot[SPRITE_VARIABLES_KEY];
+            Object.keys(sprites).forEach((spriteId) => {
+                delete sprites[spriteId];
+            });
         }
     }
 
