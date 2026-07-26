@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://draker.8os.space/plugins/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wednesday's Scratch Extensions</title>
+    <link href="./static/homepage/style.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #001227;
+            color: #80fbff;
+            font-family: 'IBM Plex Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0 0 10px;
+            font-weight: 400;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0.5px solid #555;
+            margin: 20px 0;
+        }
+
+        .extensions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .extension-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+            transition: border-color 0.2s;
+        }
+
+        .extension-card:hover {
+            border-color: #666;
+        }
+
+        .extension-banner {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 448 / 338; 
+            object-fit: contain;
+            background: #222;
+            display: block;
+        }
+
+        .extension-content {
+            padding: 15px;
+        }
+
+        .extension-name {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0 0 8px;
+        }
+
+        .extension-description {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .extension-url {
+            font-size: 10px;
+            opacity: 0;
+            word-break: break-all;
+            margin-bottom: 10px;
+            transition: opacity 0.2s;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .extension-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .copy-btn,
+        .view-btn,
+        .download-btn {
+            border: none;
+            padding: 6px 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: opacity 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .copy-btn:hover,
+        .view-btn:hover,
+        .download-btn:hover {
+            opacity: 0.8;
+        }
+
+        .copy-btn:hover~.extension-url {
+            opacity: 0.5;
+            max-height: 100px;
+        }
+
+        .copy-btn.copied {
+            background: #4CAF50;
+            color: #fff;
+        }
+
+        .loading {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 40px;
+        }
+
+        .error {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 40px;
+            color: #ff6b6b;
+        }
+
+        .copy-btn {
+            background: #00a2ff;
+            color: white;
+        }
+
+        .view-btn {
+            background: #9d52ff;
+            color: white;
+        }
+
+        .download-btn {
+            background: orange;
+            color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>extensions</h1>
+        <div class="subtitle">my extension gallery</div>
+        <hr>
+
+        <div id="extensions-container"><div class="extensions-grid"><div class="extension-card"><img class="extension-banner" src="./static/homepage/runtimeBanner.png" alt="Positions"><div class="extension-content"><h2 class="extension-name">Positions</h2><p class="extension-description">A plugin to store positional data in reporters. <i>Pairs well with Targets by jwklong.</i></p><div class="extension-buttons"><button class="copy-btn">copy url</button><a class="view-btn" href="https://studio.penguinmod.com/editor.html?extension=https%3A%2F%2Fdraker.8os.space%2Fplugins%2Fpositions.js" target="_blank">view</a><a class="download-btn" href="./static/extensions/runtimevariables.js" download="" target="_blank">download</a></div><div class="extension-url">https://draker.8os.space/plugins/positions.js</div></div></div>
+        <div id="extensions-container"><div class="extensions-grid"><div class="extension-card"><img class="extension-banner" src="./static/homepage/runtimeBanner.png" alt="Positions"><div class="extension-content"><h2 class="extension-name">Positions</h2><p class="extension-description">A plugin to store positional data in reporters. <i>Pairs well with Targets by jwklong.</i></p><div class="extension-buttons"><button class="copy-btn">copy url</button><a class="view-btn" href="https://studio.penguinmod.com/editor.html?extension=https%3A%2F%2Fdraker.8os.space%2Fplugins%2Fpositions.js" target="_blank">view</a><a class="download-btn" href="./static/extensions/runtimevariables.js" download="" target="_blank">download</a></div><div class="extension-url">https://draker.8os.space/plugins/positions.js</div></div></div>
+        <div id="extensions-container"><div class="extensions-grid"><div class="extension-card"><img class="extension-banner" src="./static/homepage/runtimeBanner.png" alt="Positions"><div class="extension-content"><h2 class="extension-name">Positions</h2><p class="extension-description">A plugin to store positional data in reporters. <i>Pairs well with Targets by jwklong.</i></p><div class="extension-buttons"><button class="copy-btn">copy url</button><a class="view-btn" href="https://studio.penguinmod.com/editor.html?extension=https%3A%2F%2Fdraker.8os.space%2Fplugins%2Fpositions.js" target="_blank">view</a><a class="download-btn" href="./static/extensions/runtimevariables.js" download="" target="_blank">download</a></div><div class="extension-url">https://draker.8os.space/plugins/positions.js</div></div></div>
+        <div id="extensions-container"><div class="extensions-grid"><div class="extension-card"><img class="extension-banner" src="./static/homepage/runtimeBanner.png" alt="Positions"><div class="extension-content"><h2 class="extension-name">Positions</h2><p class="extension-description">A plugin to store positional data in reporters. <i>Pairs well with Targets by jwklong.</i></p><div class="extension-buttons"><button class="copy-btn">copy url</button><a class="view-btn" href="https://studio.penguinmod.com/editor.html?extension=https%3A%2F%2Fdraker.8os.space%2Fplugins%2Fpositions.js" target="_blank">view</a><a class="download-btn" href="./static/extensions/runtimevariables.js" download="" target="_blank">download</a></div><div class="extension-url">https://draker.8os.space/plugins/positions.js</div></div></div>
+    </div>
+
+    <script>
+        async function loadExtensions() {
+            const container = document.getElementById('extensions-container');
+
+            try {
+                const cache = Math.floor(Math.random() * 1000000);
+                const res = await fetch(`extensions.json?cache=${cache}`);
+
+                if (!res.ok) throw new Error('failed to load extensions');
+
+                const extensions = await res.json();
+
+                if (!extensions || extensions.length === 0) {
+                    container.innerHTML = '<div class="error">no extensions found</div>';
+                    return;
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'extensions-grid';
+
+                extensions.forEach((ext, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'extension-card';
+
+                    const banner = document.createElement('img');
+                    banner.className = 'extension-banner';
+                    banner.src = ext.banner || '';
+                    banner.alt = ext.name || 'Extension';
+
+                    const content = document.createElement('div');
+                    content.className = 'extension-content';
+
+                    const name = document.createElement('h2');
+                    name.className = 'extension-name';
+                    name.innerHTML = ext.name || 'Unnamed Extension';
+
+                    const description = document.createElement('p');
+                    description.className = 'extension-description';
+                    description.innerHTML = ext.description || 'No description provided.';
+
+                    const buttonsDiv = document.createElement('div');
+                    buttonsDiv.className = 'extension-buttons';
+
+                    const copyBtn = document.createElement('button');
+                    copyBtn.className = 'copy-btn';
+                    copyBtn.innerHTML = 'copy url';
+                    copyBtn.onclick = () => copyToClipboard(ext.url, copyBtn);
+
+                    const viewBtn = document.createElement('a');
+                    viewBtn.className = 'view-btn';
+                    viewBtn.innerHTML = 'view';
+                    viewBtn.href = `https://studio.penguinmod.com/editor.html?extension=${encodeURIComponent(ext.url)}`;
+                    viewBtn.target = '_blank';
+
+                    const downloadBtn = document.createElement('a');
+                    downloadBtn.className = 'download-btn';
+                    downloadBtn.innerHTML = 'download';
+                    downloadBtn.href = ext.url;
+                    downloadBtn.download = ''; 
+                    downloadBtn.target = '_blank';
+
+                    const url = document.createElement('div');
+                    url.className = 'extension-url';
+                    url.innerHTML = ext.url || '';
+
+                    buttonsDiv.appendChild(copyBtn);
+                    buttonsDiv.appendChild(viewBtn);
+                    buttonsDiv.appendChild(downloadBtn); 
+
+                    content.appendChild(name);
+                    content.appendChild(description);
+                    content.appendChild(buttonsDiv);
+                    content.appendChild(url);
+
+                    card.appendChild(banner);
+                    card.appendChild(content);
+                    grid.appendChild(card);
+                });
+
+                container.innerHTML = '';
+                container.appendChild(grid);
+
+            } catch (err) {e
+                container.innerHTML = '<div class="error">failed to load extensions</div>';
+                console.error(err);
+            }
+        }
+
+        async function copyToClipboard(text, button) {
+            try {
+                await navigator.clipboard.writeText(text);
+                const originalText = button.innerHTML;
+                button.innerHTML = 'copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                button.innerHTML = 'failed';
+                setTimeout(() => {
+                    button.innerHTML = 'copy url';
+                }, 2000);
+            }
+        }
+
+        loadExtensions();
+    </script>
+
+
+</body></html>
